@@ -16,7 +16,8 @@ import java.util.regex.Pattern
 @RequestMapping("/users")
 @RestController
 class UserController(val userService: UserService,
-                     val userDao: UserDao) {
+                     val userDao: UserDao,
+                     val userDaoLevel1: UserDaoLevel1) {
 
     @GetMapping
     fun getUsers() = userService.getUsers()
@@ -40,5 +41,21 @@ class UserController(val userService: UserService,
         }
         val paramsList: List<SearchCriteria> = params
         return userDao.receiveResult(paramsList)
+    }
+
+    @GetMapping("/search1")
+    fun getUsersSearch1(@RequestParam(required = false) search: String?): List<User> {
+        val params: MutableList<SearchCriteria> = mutableListOf()
+        search?.let {
+            val operation = StringUtils.substringBetween(search, ":", ":")
+            val key = StringUtils.substringBefore(search, ":$operation:")
+            val value = StringUtils.substringAfter(search, ":$operation:")
+            println("operation: $operation")
+            println("key: $key")
+            println("value: $value")
+            params.add(SearchCriteria(key, operation, value))
+        }
+        val paramsList: List<SearchCriteria> = params
+        return userDaoLevel1.getUsers(paramsList)
     }
 }
