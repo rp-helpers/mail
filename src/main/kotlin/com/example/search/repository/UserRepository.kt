@@ -13,6 +13,7 @@ import java.util.*
 interface UserRepository : JpaRepository<User, Long>, JpaSpecificationExecutor<User>/*, PagingAndSortingRepository<User, Long>*/ {
     fun findUserByEmail(email: String): Optional<User>
     override fun findAll(pageable: Pageable): Page<User>
+    override fun findAll(spec: Specification<User>?, pageable: Pageable): Page<User>
 
 
 

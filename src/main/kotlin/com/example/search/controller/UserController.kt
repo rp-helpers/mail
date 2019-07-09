@@ -58,4 +58,10 @@ class UserController(val userService: UserService,
         val paramsList: List<SearchCriteria> = params
         return userDaoLevel1.getUsers(paramsList)
     }
+
+    @GetMapping("/test")
+    fun getUsersTest(@RequestParam(required = false) search: String?, pageable: Pageable): Page<User>{
+        val spec: Specification<User>? = SpecUtils.getSpecification(search)
+        return userRepository.findAll(spec!!, pageable)
+    }
 }
