@@ -11,5 +11,6 @@ data class User(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
         var email: String? = null,
-        var password: String? = null
+        var password: String? = null,
+        var priority: Priority
 )

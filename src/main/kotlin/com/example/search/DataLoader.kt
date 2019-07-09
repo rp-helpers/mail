@@ -13,17 +13,17 @@ class DataLoader @Autowired constructor(val userRepository: UserRepository) : Ap
 
     @Transactional
     override fun run(args: ApplicationArguments?) {
-        var userNo1: User = User(null, "email_No_1@op.pl", "1234")
-        var userNo2: User = User(null, "email_No_2@op.pl", "1234")
-        var userNo3: User = User(null, "email_No_3@op.pl", "1234")
-        var userNo4: User = User(null, "drjsk", "1234")
-        var userNo5: User = User(null, "stkysk@op.pl", "1234")
-        var userNo6: User = User(null, "dyksxms@op.pl", "1234")
-        var userNo7: User = User(null, "x@op.pl", "1234")
-        var userNo8: User = User(null, "tk@op.pl", "1234")
-        var userNo9: User = User(null, "xdt,ktdymtm@op.pl", "1234")
-        var userNo10: User = User(null, "dx,tmdhd@op.pl", "1234")
-        var userNo11: User = User(null, "xtmxmtmyy@op.pl", "1234")
+        var userNo1: User = User(null, "email_No_1@op.pl", "1234", Priority.NORMAL)
+        var userNo2: User = User(null, "email_No_2@op.pl", "1234", Priority.NORMAL)
+        var userNo3: User = User(null, "email_No_3@op.pl", "1234", Priority.NORMAL)
+        var userNo4: User = User(null, "drjsk", "1234", Priority.HIGH)
+        var userNo5: User = User(null, "stkysk@op.pl", "1234", Priority.HIGH)
+        var userNo6: User = User(null, "dyksxms@op.pl", "1234", Priority.HIGH)
+        var userNo7: User = User(null, "x@op.pl", "1234", Priority.HIGH)
+        var userNo8: User = User(null, "tk@op.pl", "1234", Priority.NORMAL)
+        var userNo9: User = User(null, "xdt,ktdymtm@op.pl", "1234", Priority.NORMAL)
+        var userNo10: User = User(null, "dx,tmdhd@op.pl", "1234", Priority.NORMAL)
+        var userNo11: User = User(null, "xtmxmtmyy@op.pl", "1234", Priority.NORMAL)
 
         userRepository.save(userNo1)
         userRepository.save(userNo2)
